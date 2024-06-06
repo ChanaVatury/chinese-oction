@@ -1,0 +1,30 @@
+<Form [formGroup]="AddPres">
+<p-dialog [(visible)]="presentDialog" [style]="{width: '450px'}" header="Present Details" [modal]="true"
+    styleClass="p-fluid" [closable]="false">
+    <ng-template pTemplate="content">
+        <div class="row form-group">
+        <div class="p-field">
+            <label for="name">Name</label>
+            <input type="text" pInputText id="name" [(ngModel)]="present.name" required autofocus class="control-lable" formControlName="name" />
+            <span class="p-error" *ngIf="AddPres.controls['name'].errors && AddPres.controls['name'].errors['doable']">existes already</span> 
+            <small class="p-error" *ngIf=" !present.name">Name is required.</small>
+        </div></div>
+        <div class="p-field">
+            <label for="ticketPrice">TicketPrice</label>
+            <input type="number" pInputText id="ticketPrice" [(ngModel)]="present.ticketPrice" required autofocus class="control-lable" formControlName="ticketPrice"/>
+            <small class="p-error" *ngIf=" !present.ticketPrice">ticketPrice is required.</small>
+        </div>
+        <div class="p-field">
+            <label for="donar">Donar</label>
+            <input type="text" pInputText id="donar" [(ngModel)]="present.donar" required autofocus class="control-lable" formControlName="donar" />
+            <small class="p-error" *ngIf="!present.donar">donar is required.</small>
+        </div>
+
+    </ng-template>
+
+    <ng-template pTemplate="footer">
+        <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text" (click)="hideDialog()"></button>
+        <button pButton pRipple label="Save" icon="pi pi-check" class="p-button-text" (click)="savePresent()"></button>
+    </ng-template>
+</p-dialog>
+</Form>

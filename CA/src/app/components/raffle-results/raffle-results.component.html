@@ -1,0 +1,35 @@
+<ul>
+    <ng-container *ngFor="let item of winners; let i = index; let even = even">
+      <ng-container *ngIf="even">
+        <li>
+        <div>Present:{{ winners[i] }}</div>
+          <div>Winner:{{ winners[i+1] }}</div>
+          <br>
+        </li>
+      </ng-container>
+    </ng-container>
+  </ul>
+
+  
+
+  <p-carousel [value]="winners" [numVisible]="3" [numScroll]="2" [circular]="true" [responsiveOptions]="responsiveOptions" [autoplayInterval]="3000">
+    <ng-template let-winner let-index="index" pTemplate="item">
+      <ng-container *ngIf="(index % 2) === 0">
+        <div class="border-1 surface-border border-round m-2 text-center py-5 px-3">
+          <div class="mb-3">
+            <!-- <img class="w-6 shadow-2" [src]="'https://localhost:44345' + winner" [alt]="winner" /> -->
+          </div>
+          <div>
+            <h4 class="mb-1">{{ winner }}</h4>
+            <h4 class="mb-1">{{ winners[index + 1] }}</h4>
+            <h6 class="mt-0 mb-3"></h6>
+            <!-- <p-tag [value]="product.inventoryStatus" [severity]="getSeverity(product.inventoryStatus)"></p-tag> -->
+            <div class="car-buttons mt-5">
+              <p-button type="button" styleClass="p-button p-button-rounded mr-2" icon="pi pi-search"></p-button>
+              <p-button type="button" styleClass="p-button-success p-button-rounded mr-2" icon="pi pi-star-fill"></p-button>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+    </ng-template>
+  </p-carousel>
